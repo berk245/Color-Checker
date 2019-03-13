@@ -1,0 +1,15 @@
+name,hex
+18th Century Green,#a59344
+1975 Earth Red,#7a463a
+20000 Leagues Under the Sea,#191970
+400XT Film,#d2d2c0
+5-Masted Preußen,#9bafad
+8Bit Eggplant,#990066
+90% Cocoa,#3d1c02
+A Hint of Incremental Blue,#456789
+A State of Mint,#88ffcc
+Aare River,#00b89f
+Aare River Brienz,#05a3ad
+Abaddon Black,#231f20
+Abaidh White,#f2f1e6
+Abalone,#f8f3f6
