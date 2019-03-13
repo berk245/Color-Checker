@@ -1,41 +1,70 @@
+#!/Python37-32
+
 import cgi
+import sys
 import csv
 
 form = cgi.FieldStorage()
 
-user_color = form.getvalue('user_color')
+user_color = form.getvalue('usercolor')
 
-splitted_color = user_color.split()
-match_found = False
 
-with open("./colornames.txt") as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter= ',')
-    for row in csv_reader:
-        if splitted_color[0] == "#":
-            if user_color == row[1]:
-                print("""<html>
-                    <body>
-                    <p> Yes,that code is a color and it's name is %s
-                    </p>
-                    </body>
-                    </html>
-                    """%row[0])
-                match_found = True            
+with open('colors.csv') as csv_file:
+    hex_found = False
+    color_found = False
+    csv_file_reader = csv.reader(csv_file)
+    for row in csv_file_reader:
+        if user_color[0] == '#':
+            if user_color == row[2]:
+                hex_found = True
+                break
         else:
-            if user_color.lower() == row[0].lower():
-                print("""<html>
-                    <body>
-                    <p> Yes, that's a color and it's hex code is %s
-                    </p>
-                    </body>
-                    </html>
-                    """ %row[1])
-                match_found = True
-    if not match_found:    
-        print("""<html>
-                <body>
-                <p> This is not a valid color name or a code
-                </p>
-                </body>
-                </html>
-                """)    
+            if user_color.upper() == row[1].upper():
+                color_found = True
+                break
+
+    if color_found:
+        print("""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            </head>
+            <body>
+            <p> Color Match Found </p>
+            </body>
+            </html>""") 
+    elif hex_found:
+        print("""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            </head>
+            <body>
+            <p> Hex Match Found </p>
+            </body>
+            </html>""") 
+    else:
+        print("""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+            </head>
+            <body>
+            <p> No Match Found </p>
+            </body>
+            </html>""")         
+
+    
+        

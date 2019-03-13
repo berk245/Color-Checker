@@ -4,7 +4,7 @@ user_color = '18th Century Green'
 splitted_color = user_color.split()
 match_found = False
 
-with open("colornames.txt") as csv_file:
+with open("./scripts/colornames.txt") as csv_file:
     csv_reader = csv.reader(csv_file, delimiter= ',')
     for row in csv_reader:
         if splitted_color[0] == "#":

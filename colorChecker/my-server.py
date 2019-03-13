@@ -12,14 +12,14 @@ handler = http.server.CGIHTTPRequestHandler
 handler.cgi_directories = ["/scripts"]
 
 # define the server using the handler
-PORT = 65432
+PORT = 8000
 httpd = socketserver.TCPServer(("localhost", PORT), handler)
 
 # Set variables which the CGIHTTPRequestHandler expects
 httpd.server_name = "myServer"
 httpd.server_port = PORT
 
-print("staring CGI server at http://127.0.0.1:65432")
+print("staring CGI server at localhost:8000")
 
 # run the server. To kill it, issue Ctrl + C
 httpd.serve_forever()
